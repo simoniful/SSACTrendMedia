@@ -10,7 +10,8 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var btnGroup: UIStackView!
     @IBOutlet weak var mediaTableView: UITableView!
- 
+    @IBOutlet weak var bookBtn: UIButton!
+    
     let tvShowInformation = TvShowInformation()
     
     override func viewDidLoad() {
@@ -24,6 +25,12 @@ class ViewController: UIViewController {
         btnGroup.layer.shadowOffset = CGSize(width: 0, height: 0)
         btnGroup.layer.shadowRadius = 10
         btnGroup.layer.masksToBounds = false
+    }
+    
+    @IBAction func bookBtnClicked(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MediaBookCollectionViewController") as! MediaBookCollectionViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func searchBtnClicked(_ sender: UIBarButtonItem) {

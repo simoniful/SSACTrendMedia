@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,13 +46,55 @@
                     <view key="view" contentMode="scaleToFill" id="6hf-jd-yKN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="X7W-ge-5Av">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Sit-AB-utX"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ijv-62-3WH">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="LQV-zS-q55"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Item" id="Wdr-C4-mqf"/>
+                                </items>
+                            </toolbar>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lkV-Q8-Crz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="7ga-L5-B0C"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="X7W-ge-5Av" firstAttribute="trailing" secondItem="7ga-L5-B0C" secondAttribute="trailing" id="DjV-Rp-zFL"/>
+                            <constraint firstItem="lkV-Q8-Crz" firstAttribute="top" secondItem="X7W-ge-5Av" secondAttribute="bottom" id="FLF-c9-i2j"/>
+                            <constraint firstItem="lkV-Q8-Crz" firstAttribute="leading" secondItem="7ga-L5-B0C" secondAttribute="leading" id="O39-jh-7Gn"/>
+                            <constraint firstItem="X7W-ge-5Av" firstAttribute="leading" secondItem="7ga-L5-B0C" secondAttribute="leading" id="YLx-J6-fLf"/>
+                            <constraint firstItem="Ijv-62-3WH" firstAttribute="leading" secondItem="7ga-L5-B0C" secondAttribute="leading" id="dbR-sJ-Z5K"/>
+                            <constraint firstItem="lkV-Q8-Crz" firstAttribute="trailing" secondItem="7ga-L5-B0C" secondAttribute="trailing" id="m3l-yU-gCF"/>
+                            <constraint firstItem="X7W-ge-5Av" firstAttribute="top" secondItem="7ga-L5-B0C" secondAttribute="top" id="p9Q-w1-NDV"/>
+                            <constraint firstItem="Ijv-62-3WH" firstAttribute="top" secondItem="lkV-Q8-Crz" secondAttribute="bottom" id="xIa-Cy-XFF"/>
+                            <constraint firstItem="Ijv-62-3WH" firstAttribute="bottom" secondItem="7ga-L5-B0C" secondAttribute="bottom" id="zGW-E5-pwz"/>
+                            <constraint firstItem="Ijv-62-3WH" firstAttribute="trailing" secondItem="7ga-L5-B0C" secondAttribute="trailing" id="zg0-PY-0t6"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="X7W-ge-5Av" id="KLq-jm-YB4"/>
+                        <outlet property="webview" destination="lkV-Q8-Crz" id="W0I-yC-ZhV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqO-9A-YGk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1642.0289855072465" y="-585.26785714285711"/>
+            <point key="canvasLocation" x="1634.7826086956522" y="-585.26785714285711"/>
         </scene>
         <!--TREND MEDIA-->
         <scene sceneID="tne-QT-ifu">
@@ -115,6 +158,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="book.closed" catalog="system" title="">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="36"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="bookBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Er5-47-zcp"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -337,6 +383,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bookBtn" destination="ZxK-9T-xNp" id="i64-kE-X7D"/>
                         <outlet property="btnGroup" destination="zUc-Zd-myA" id="0np-ql-IbE"/>
                         <outlet property="mediaTableView" destination="ahE-cV-Vih" id="DmA-YB-DZ3"/>
                     </connections>
@@ -344,6 +391,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="939.13043478260875" y="95.758928571428569"/>
+        </scene>
+        <!--Media Book Collection View Controller-->
+        <scene sceneID="Iut-I7-pKY">
+            <objects>
+                <viewController storyboardIdentifier="MediaBookCollectionViewController" id="Zjo-35-7Vg" customClass="MediaBookCollectionViewController" customModule="SSACTrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2t9-d1-pOt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jvc-g7-9v7">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="04u-CW-sg0">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="sq0-9n-zhB">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Vkc-5N-kFx">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yor-mw-hXf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="bookCollectionView" destination="Jvc-g7-9v7" id="D9Z-xL-tni"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dMg-MW-G96" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1634.7826086956522" y="95.758928571428569"/>
         </scene>
         <!--Media Cast Table View Controller-->
         <scene sceneID="HgW-JE-ycG">
@@ -397,6 +485,12 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="tUQ-6e-cDz" secondAttribute="bottom" id="BXk-Lk-6WD"/>
+                                    <constraint firstItem="tUQ-6e-cDz" firstAttribute="top" secondItem="1wy-fM-BiY" secondAttribute="bottom" id="FPD-po-Djb"/>
+                                    <constraint firstAttribute="trailing" secondItem="tUQ-6e-cDz" secondAttribute="trailing" id="JCv-oB-Ua0"/>
+                                    <constraint firstItem="tUQ-6e-cDz" firstAttribute="leading" secondItem="hUK-EH-dKa" secondAttribute="leading" id="JtM-EH-Ba8"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Fn-gD-IQe"/>

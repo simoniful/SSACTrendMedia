@@ -20,6 +20,9 @@
 		F415C27C271EA77300290F29 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415C27B271EA77300290F29 /* WebViewController.swift */; };
 		F415C27F271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415C27D271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift */; };
 		F415C280271EB68F00290F29 /* MediaCastOverviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F415C27E271EB68F00290F29 /* MediaCastOverviewTableViewCell.xib */; };
+		F415C282271ED78700290F29 /* MediaBookCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415C281271ED78700290F29 /* MediaBookCollectionViewController.swift */; };
+		F415C289271EEF2400290F29 /* MediaBookCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415C287271EEF2400290F29 /* MediaBookCollectionViewCell.swift */; };
+		F415C28A271EEF2400290F29 /* MediaBookCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F415C288271EEF2400290F29 /* MediaBookCollectionViewCell.xib */; };
 		F49B631F271D3E4600BC042B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B631E271D3E4600BC042B /* AppDelegate.swift */; };
 		F49B6321271D3E4600BC042B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B6320271D3E4600BC042B /* SceneDelegate.swift */; };
 		F49B6323271D3E4600BC042B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B6322271D3E4600BC042B /* ViewController.swift */; };
@@ -41,6 +44,9 @@
 		F415C27B271EA77300290F29 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F415C27D271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCastOverviewTableViewCell.swift; sourceTree = "<group>"; };
 		F415C27E271EB68F00290F29 /* MediaCastOverviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCastOverviewTableViewCell.xib; sourceTree = "<group>"; };
+		F415C281271ED78700290F29 /* MediaBookCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaBookCollectionViewController.swift; sourceTree = "<group>"; };
+		F415C287271EEF2400290F29 /* MediaBookCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaBookCollectionViewCell.swift; sourceTree = "<group>"; };
+		F415C288271EEF2400290F29 /* MediaBookCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaBookCollectionViewCell.xib; sourceTree = "<group>"; };
 		F49B631B271D3E4600BC042B /* SSACTrendMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSACTrendMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49B631E271D3E4600BC042B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F49B6320271D3E4600BC042B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +102,9 @@
 				F415C265271D9F9400290F29 /* MediaSearchTableViewCell.swift */,
 				F415C263271D9EBA00290F29 /* MediaSearchTableViewController.swift */,
 				F415C27B271EA77300290F29 /* WebViewController.swift */,
+				F415C288271EEF2400290F29 /* MediaBookCollectionViewCell.xib */,
+				F415C287271EEF2400290F29 /* MediaBookCollectionViewCell.swift */,
+				F415C281271ED78700290F29 /* MediaBookCollectionViewController.swift */,
 				F415C251271D4F2E00290F29 /* TvShow.swift */,
 				F415C24F271D4E7000290F29 /* TvShowInformation.swift */,
 				F49B6327271D3E4700BC042B /* Assets.xcassets */,
@@ -173,6 +182,7 @@
 				F49B632B271D3E4700BC042B /* LaunchScreen.storyboard in Resources */,
 				F415C260271D98FE00290F29 /* MediaCastTableViewCell.xib in Resources */,
 				F49B6328271D3E4700BC042B /* Assets.xcassets in Resources */,
+				F415C28A271EEF2400290F29 /* MediaBookCollectionViewCell.xib in Resources */,
 				F415C268271D9F9400290F29 /* MediaSearchTableViewCell.xib in Resources */,
 				F49B6326271D3E4600BC042B /* Main.storyboard in Resources */,
 			);
@@ -196,6 +206,8 @@
 				F415C27F271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift in Sources */,
 				F415C25F271D98FE00290F29 /* MediaCastTableViewCell.swift in Sources */,
 				F415C258271D515000290F29 /* MediaTableViewCell.swift in Sources */,
+				F415C282271ED78700290F29 /* MediaBookCollectionViewController.swift in Sources */,
+				F415C289271EEF2400290F29 /* MediaBookCollectionViewCell.swift in Sources */,
 				F49B6321271D3E4600BC042B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
