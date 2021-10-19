@@ -47,6 +47,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lkV-Q8-Crz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="X7W-ge-5Av">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <constraints>
@@ -60,17 +68,27 @@
                                     <constraint firstAttribute="height" constant="44" id="LQV-zS-q55"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Item" id="Wdr-C4-mqf"/>
+                                    <barButtonItem title="Item" image="xmark" catalog="system" id="Wdr-C4-mqf"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="blP-VF-Cw5"/>
+                                    <barButtonItem title="Item" image="arrow.backward" catalog="system" id="50V-Y3-hf6">
+                                        <connections>
+                                            <action selector="goBackBtnClicked:" destination="Swr-WT-NGF" id="JId-RU-OXR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kJy-Ka-ALO"/>
+                                    <barButtonItem title="Item" image="arrow.clockwise" catalog="system" id="qlN-Jo-kKV">
+                                        <connections>
+                                            <action selector="reloadBtnClicked:" destination="Swr-WT-NGF" id="a9d-jA-jOh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="KPZ-UP-ev6"/>
+                                    <barButtonItem title="Item" image="arrow.forward" catalog="system" id="8fY-bc-k0i">
+                                        <connections>
+                                            <action selector="goForwardBtnClicked:" destination="Swr-WT-NGF" id="Fw8-1d-LVe"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lkV-Q8-Crz">
-                                <rect key="frame" x="0.0" y="88" width="414" height="730"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7ga-L5-B0C"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -533,6 +551,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
+        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
+        <image name="arrow.forward" catalog="system" width="128" height="98"/>
         <image name="book.closed" catalog="system" width="115" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="film" catalog="system" width="128" height="93"/>
@@ -541,6 +562,7 @@
         <image name="paperclip" catalog="system" width="121" height="128"/>
         <image name="tv" catalog="system" width="128" height="97"/>
         <image name="unique-polygon-background-vector" width="700" height="490"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
