@@ -97,6 +97,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let row = tvShowInformation.tvShow[indexPath.row]
         vc.tvShowData = row
         self.navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
     }
     
     

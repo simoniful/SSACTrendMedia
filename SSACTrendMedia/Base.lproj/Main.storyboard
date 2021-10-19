@@ -366,6 +366,8 @@
                                                 <constraint firstItem="cvD-2t-ebx" firstAttribute="leading" secondItem="DMg-PP-497" secondAttribute="leadingMargin" id="zK7-iB-QQU"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="containerView" destination="1xM-2o-w5X" id="TlQ-Vm-1Lo"/>
                                             <outlet property="genreHashtagLabel" destination="cvD-2t-ebx" id="5ga-nE-bre"/>
@@ -418,9 +420,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jvc-g7-9v7">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jvc-g7-9v7">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="04u-CW-sg0">
                                     <size key="itemSize" width="128" height="128"/>
@@ -442,6 +443,12 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yor-mw-hXf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Jvc-g7-9v7" firstAttribute="bottom" secondItem="yor-mw-hXf" secondAttribute="bottom" id="012-mp-aIl"/>
+                            <constraint firstItem="Jvc-g7-9v7" firstAttribute="leading" secondItem="yor-mw-hXf" secondAttribute="leading" id="NGu-fb-9xw"/>
+                            <constraint firstItem="Jvc-g7-9v7" firstAttribute="top" secondItem="yor-mw-hXf" secondAttribute="top" id="X0h-Zg-R7q"/>
+                            <constraint firstItem="Jvc-g7-9v7" firstAttribute="trailing" secondItem="yor-mw-hXf" secondAttribute="trailing" id="yNh-ge-twz"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="bookCollectionView" destination="Jvc-g7-9v7" id="D9Z-xL-tni"/>
