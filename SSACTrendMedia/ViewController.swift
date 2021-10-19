@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var btnGroup: UIStackView!
     @IBOutlet weak var mediaTableView: UITableView!
-    
+ 
     let tvShowInformation = TvShowInformation()
     
     override func viewDidLoad() {
@@ -32,6 +32,16 @@ class ViewController: UIViewController {
         let nav =  UINavigationController(rootViewController: vc)
         nav.modalTransitionStyle = .coverVertical
         nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
+    }
+    
+    @objc func linkBtnClicked(selectButton: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        vc.tvShowData = tvShowInformation.tvShow[selectButton.tag]
+        let nav =  UINavigationController(rootViewController: vc)
+        nav.modalTransitionStyle = .coverVertical
+        nav.modalPresentationStyle = .automatic
         self.present(nav, animated: true, completion: nil)
     }
 }
@@ -62,6 +72,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.rateLabel.text = String(row.rate)
         cell.korTitleLabel.text = row.title
         cell.releaseDateLabel.text = row.releaseDate
+        cell.linkBtn.tag = indexPath.row
+        cell.linkBtn.layer.cornerRadius = 22
+        cell.linkBtn.addTarget(self, action: #selector(linkBtnClicked(selectButton:)), for: .touchUpInside)
         
         return cell
     }

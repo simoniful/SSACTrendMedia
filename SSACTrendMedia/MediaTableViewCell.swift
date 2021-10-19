@@ -19,6 +19,7 @@ class MediaTableViewCell: UITableViewCell {
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var korTitleLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var linkBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

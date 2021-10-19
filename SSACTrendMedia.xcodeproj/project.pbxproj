@@ -16,6 +16,10 @@
 		F415C264271D9EBA00290F29 /* MediaSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415C263271D9EBA00290F29 /* MediaSearchTableViewController.swift */; };
 		F415C267271D9F9400290F29 /* MediaSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415C265271D9F9400290F29 /* MediaSearchTableViewCell.swift */; };
 		F415C268271D9F9400290F29 /* MediaSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F415C266271D9F9400290F29 /* MediaSearchTableViewCell.xib */; };
+		F415C27A271EA05900290F29 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F415C279271EA05900290F29 /* Kingfisher */; };
+		F415C27C271EA77300290F29 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415C27B271EA77300290F29 /* WebViewController.swift */; };
+		F415C27F271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F415C27D271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift */; };
+		F415C280271EB68F00290F29 /* MediaCastOverviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F415C27E271EB68F00290F29 /* MediaCastOverviewTableViewCell.xib */; };
 		F49B631F271D3E4600BC042B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B631E271D3E4600BC042B /* AppDelegate.swift */; };
 		F49B6321271D3E4600BC042B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B6320271D3E4600BC042B /* SceneDelegate.swift */; };
 		F49B6323271D3E4600BC042B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B6322271D3E4600BC042B /* ViewController.swift */; };
@@ -34,6 +38,9 @@
 		F415C263271D9EBA00290F29 /* MediaSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSearchTableViewController.swift; sourceTree = "<group>"; };
 		F415C265271D9F9400290F29 /* MediaSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSearchTableViewCell.swift; sourceTree = "<group>"; };
 		F415C266271D9F9400290F29 /* MediaSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaSearchTableViewCell.xib; sourceTree = "<group>"; };
+		F415C27B271EA77300290F29 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		F415C27D271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCastOverviewTableViewCell.swift; sourceTree = "<group>"; };
+		F415C27E271EB68F00290F29 /* MediaCastOverviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaCastOverviewTableViewCell.xib; sourceTree = "<group>"; };
 		F49B631B271D3E4600BC042B /* SSACTrendMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSACTrendMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49B631E271D3E4600BC042B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F49B6320271D3E4600BC042B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F415C27A271EA05900290F29 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,10 +89,13 @@
 				F49B6322271D3E4600BC042B /* ViewController.swift */,
 				F415C25E271D98FE00290F29 /* MediaCastTableViewCell.xib */,
 				F415C25D271D98FE00290F29 /* MediaCastTableViewCell.swift */,
+				F415C27E271EB68F00290F29 /* MediaCastOverviewTableViewCell.xib */,
+				F415C27D271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift */,
 				F415C259271D8A6000290F29 /* MediaCastTableViewController.swift */,
 				F415C266271D9F9400290F29 /* MediaSearchTableViewCell.xib */,
 				F415C265271D9F9400290F29 /* MediaSearchTableViewCell.swift */,
 				F415C263271D9EBA00290F29 /* MediaSearchTableViewController.swift */,
+				F415C27B271EA77300290F29 /* WebViewController.swift */,
 				F415C251271D4F2E00290F29 /* TvShow.swift */,
 				F415C24F271D4E7000290F29 /* TvShowInformation.swift */,
 				F49B6327271D3E4700BC042B /* Assets.xcassets */,
@@ -110,6 +121,9 @@
 			dependencies = (
 			);
 			name = SSACTrendMedia;
+			packageProductDependencies = (
+				F415C279271EA05900290F29 /* Kingfisher */,
+			);
 			productName = SSACTrendMedia;
 			productReference = F49B631B271D3E4600BC042B /* SSACTrendMedia.app */;
 			productType = "com.apple.product-type.application";
@@ -138,6 +152,9 @@
 				Base,
 			);
 			mainGroup = F49B6312271D3E4600BC042B;
+			packageReferences = (
+				F415C278271EA05900290F29 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = F49B631C271D3E4600BC042B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -152,6 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F415C280271EB68F00290F29 /* MediaCastOverviewTableViewCell.xib in Resources */,
 				F49B632B271D3E4700BC042B /* LaunchScreen.storyboard in Resources */,
 				F415C260271D98FE00290F29 /* MediaCastTableViewCell.xib in Resources */,
 				F49B6328271D3E4700BC042B /* Assets.xcassets in Resources */,
@@ -168,12 +186,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F415C267271D9F9400290F29 /* MediaSearchTableViewCell.swift in Sources */,
+				F415C27C271EA77300290F29 /* WebViewController.swift in Sources */,
 				F49B6323271D3E4600BC042B /* ViewController.swift in Sources */,
 				F415C264271D9EBA00290F29 /* MediaSearchTableViewController.swift in Sources */,
 				F49B631F271D3E4600BC042B /* AppDelegate.swift in Sources */,
 				F415C252271D4F2E00290F29 /* TvShow.swift in Sources */,
 				F415C250271D4E7000290F29 /* TvShowInformation.swift in Sources */,
 				F415C25A271D8A6000290F29 /* MediaCastTableViewController.swift in Sources */,
+				F415C27F271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift in Sources */,
 				F415C25F271D98FE00290F29 /* MediaCastTableViewCell.swift in Sources */,
 				F415C258271D515000290F29 /* MediaTableViewCell.swift in Sources */,
 				F49B6321271D3E4600BC042B /* SceneDelegate.swift in Sources */,
@@ -398,6 +418,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F415C278271EA05900290F29 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F415C279271EA05900290F29 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F415C278271EA05900290F29 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F49B6313271D3E4600BC042B /* Project object */;
 }
