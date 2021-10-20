@@ -29,6 +29,7 @@
 		F49B6326271D3E4600BC042B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49B6324271D3E4600BC042B /* Main.storyboard */; };
 		F49B6328271D3E4700BC042B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49B6327271D3E4700BC042B /* Assets.xcassets */; };
 		F49B632B271D3E4700BC042B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49B6329271D3E4700BC042B /* LaunchScreen.storyboard */; };
+		F4F7B98C271FE30A00B0B915 /* CinemaLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F7B98B271FE30A00B0B915 /* CinemaLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		F49B6327271D3E4700BC042B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F49B632A271D3E4700BC042B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F49B632C271D3E4700BC042B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F4F7B98B271FE30A00B0B915 /* CinemaLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinemaLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				F415C288271EEF2400290F29 /* MediaBookCollectionViewCell.xib */,
 				F415C287271EEF2400290F29 /* MediaBookCollectionViewCell.swift */,
 				F415C281271ED78700290F29 /* MediaBookCollectionViewController.swift */,
+				F4F7B98B271FE30A00B0B915 /* CinemaLocationViewController.swift */,
 				F415C251271D4F2E00290F29 /* TvShow.swift */,
 				F415C24F271D4E7000290F29 /* TvShowInformation.swift */,
 				F49B6327271D3E4700BC042B /* Assets.xcassets */,
@@ -199,6 +202,7 @@
 				F415C27C271EA77300290F29 /* WebViewController.swift in Sources */,
 				F49B6323271D3E4600BC042B /* ViewController.swift in Sources */,
 				F415C264271D9EBA00290F29 /* MediaSearchTableViewController.swift in Sources */,
+				F4F7B98C271FE30A00B0B915 /* CinemaLocationViewController.swift in Sources */,
 				F49B631F271D3E4600BC042B /* AppDelegate.swift in Sources */,
 				F415C252271D4F2E00290F29 /* TvShow.swift in Sources */,
 				F415C250271D4E7000290F29 /* TvShowInformation.swift in Sources */,

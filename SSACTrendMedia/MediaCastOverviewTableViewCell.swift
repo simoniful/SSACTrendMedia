@@ -8,6 +8,8 @@
 import UIKit
 
 class MediaCastOverviewTableViewCell: UITableViewCell {
+    // 버튼을 고정하고 레이블 4면 constraint
+    // 이미지인 경우 너비 설정 주의 
     static let identifier = "MediaCastOverviewTableViewCell"
     
     @IBOutlet weak var overViewLabel: UILabel!

@@ -49,6 +49,7 @@ class MediaCastTableViewController: UIViewController {
     @objc func expansionToggleBtnClicked(selectButton: UIButton) {
         isOpened = !isOpened
         mediaCastTableView.reloadSections(IndexSet(0...0), with: .automatic)
+        // mediaCastTableView.reloadRows(at: [IndexPath(item: 0, section: 0)], with: .fade)
     }
     
 }

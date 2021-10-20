@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnGroup: UIStackView!
     @IBOutlet weak var mediaTableView: UITableView!
     @IBOutlet weak var bookBtn: UIButton!
+    @IBOutlet weak var mapBtn: UIBarButtonItem!
     
     let tvShowInformation = TvShowInformation()
     
@@ -25,6 +26,12 @@ class ViewController: UIViewController {
         btnGroup.layer.shadowOffset = CGSize(width: 0, height: 0)
         btnGroup.layer.shadowRadius = 10
         btnGroup.layer.masksToBounds = false
+    }
+    
+    @IBAction func mapBtnClicked(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "CinemaLocationViewController") as! CinemaLocationViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func bookBtnClicked(_ sender: UIButton) {
