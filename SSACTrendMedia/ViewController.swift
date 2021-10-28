@@ -6,19 +6,28 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import Kingfisher
 
 class ViewController: UIViewController {
     @IBOutlet weak var btnGroup: UIStackView!
     @IBOutlet weak var mediaTableView: UITableView!
     @IBOutlet weak var bookBtn: UIButton!
     @IBOutlet weak var mapBtn: UIBarButtonItem!
+    @IBOutlet weak var boxOfficeBtn: UIButton!
     
-    let tvShowInformation = TvShowInformation()
+    // let tvShowInformation = TvShowInformation()
+    var trendInfoData: [TrendInfo] = []
+    var genreData: [GenreModel] = []
+    var startPage = 1
+    var totalCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mediaTableView.delegate = self
         mediaTableView.dataSource = self
+        mediaTableView.prefetchDataSource = self
         
         btnGroup.layer.cornerRadius = 10
         btnGroup.layer.shadowOpacity = 0.3
@@ -26,6 +35,52 @@ class ViewController: UIViewController {
         btnGroup.layer.shadowOffset = CGSize(width: 0, height: 0)
         btnGroup.layer.shadowRadius = 10
         btnGroup.layer.masksToBounds = false
+        fetchGenreData()
+        fetchTrendInfo()
+    }
+    
+    @objc func fetchGenreData() {
+        let url = "https://api.themoviedb.org/3/genre/movie/list?api_key=\(APIKey.TMDB)&language=ko"
+        AF.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+                self.genreData = json["genres"].arrayValue.map {
+                    GenreModel(id: $0["id"].intValue, name: $0["name"].stringValue)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    @objc func fetchTrendInfo() {
+        let url = "https://api.themoviedb.org/3/trending/movie/day?api_key=\(APIKey.TMDB)&language=ko&page=\(self.startPage)"
+        AF.request(url, method: .get).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                print("JSON: \(json)")
+                let data = json["results"].arrayValue.map({
+                    TrendInfo(title: $0["title"].stringValue, releaseDate: $0["release_date"].stringValue, genres: $0["genre_ids"].arrayValue.map({ $0.intValue }) , region: $0["original_language"].stringValue, overview: $0["overview"].stringValue, rate: $0["vote_average"].doubleValue, originalTitle: $0["original_title"].stringValue, backdropImage: $0["backdrop_path"].stringValue, posterImage: $0["poster_path"].stringValue, mediaId: $0["id"].intValue)
+                })
+                self.trendInfoData = self.trendInfoData + data
+                self.mediaTableView.reloadData()
+                self.totalCount = json["total_results"].intValue
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    @IBAction func boxOfficeBtnClicked(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "BoxOfficeViewController") as! BoxOfficeViewController
+        let nav =  UINavigationController(rootViewController: vc)
+        nav.modalTransitionStyle = .coverVertical
+        nav.modalPresentationStyle = .fullScreen
+        self.present(nav, animated: true, completion: nil)
     }
     
     @IBAction func mapBtnClicked(_ sender: UIBarButtonItem) {
@@ -52,7 +107,7 @@ class ViewController: UIViewController {
     @objc func linkBtnClicked(selectButton: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
-        vc.tvShowData = tvShowInformation.tvShow[selectButton.tag]
+        vc.tvShowData = trendInfoData[selectButton.tag]
         let nav =  UINavigationController(rootViewController: vc)
         nav.modalTransitionStyle = .coverVertical
         nav.modalPresentationStyle = .automatic
@@ -62,7 +117,7 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tvShowInformation.tvShow.count
+        return trendInfoData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,7 +126,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let row = tvShowInformation.tvShow[indexPath.row]
+        let row = trendInfoData[indexPath.row]
         
         cell.containerView.layer.cornerRadius = 10
         cell.containerView.layer.shadowOpacity = 0.3
@@ -80,9 +135,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.containerView.layer.shadowRadius = 10
         cell.containerView.layer.masksToBounds = false
         
-        cell.genreHashtagLabel.text = row.genre
-        cell.titleLabel.text = row.title
-        cell.posterImageView.image = UIImage(named: row.title)
+        
+        let convertGenres = row.genres.map { genreId in
+            genreData.first{ $0.id == genreId }?.name ?? ""
+        }
+
+        cell.genreHashtagLabel.text = convertGenres.joined(separator: ",")
+        
+        cell.titleLabel.text = row.originalTitle
+        if let url = URL(string: "https://image.tmdb.org/t/p/w500\(row.posterImage.replacingOccurrences(of: "\\" , with: ""))") {
+            cell.posterImageView.kf.setImage(with: url)
+        } else {
+            cell.posterImageView.image = UIImage(systemName: "star")
+        }
         cell.rateLabel.text = String(row.rate)
         cell.korTitleLabel.text = row.title
         cell.releaseDateLabel.text = row.releaseDate
@@ -101,7 +166,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MediaCastTableViewController") as! MediaCastTableViewController
         vc.titleSpace = "출연/제작"
-        let row = tvShowInformation.tvShow[indexPath.row]
+        let row = trendInfoData[indexPath.row]
         vc.tvShowData = row
         self.navigationController?.pushViewController(vc, animated: true)
         tableView.deselectRow(at: indexPath, animated: false)
@@ -110,3 +175,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
+
+extension ViewController: UITableViewDataSourcePrefetching {
+    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        for indexPath in indexPaths {
+            // 데이터의 총량을 측정하여 엔드 설정 및
+            if trendInfoData.count - 1 == indexPath.row && trendInfoData.count < totalCount {
+                startPage += 10
+                fetchTrendInfo()
+                print("prefetch: \(indexPath)")
+            }
+        }
+    }
+    
+    public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
+        print("취소: \(indexPaths)")
+    }
+}

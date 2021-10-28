@@ -4,7 +4,9 @@
 //
 //  Created by Sang hun Lee on 2021/10/19.
 //
-
+import Alamofire
+import SwiftyJSON
+import Kingfisher
 import WebKit
 import UIKit
 
@@ -12,7 +14,7 @@ class WebViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var webview: WKWebView!
     
-    var tvShowData: TvShow?
+    var tvShowData: TrendInfo?
     var baseURL: String = "https://www.naver.com"
     
     override func viewDidLoad() {
@@ -20,7 +22,30 @@ class WebViewController: UIViewController {
         title = tvShowData?.title ?? "PlaceHolder"
         searchBar.delegate = self
         openWebPage(to: baseURL)
-        
+        fetchVideoData()
+    }
+    
+    @objc func fetchVideoData() {
+        if let mediaId = tvShowData?.mediaId {
+            let url = "https://api.themoviedb.org/3/movie/\(mediaId)/videos?api_key=\(APIKey.TMDB)&language=ko"
+            AF.request(url, method: .get).validate().responseJSON { response in
+                switch response.result {
+                case .success(let value):
+                    let json = JSON(value)
+                    print("JSON: \(json)")
+                    let linkKeyArr = json["results"].arrayValue
+                    if linkKeyArr.isEmpty {
+                        self.openWebPage(to: self.baseURL)
+                    } else {
+                        let linkKey = linkKeyArr[0]["key"].stringValue
+                        self.baseURL = "https://www.youtube.com/watch?v=\(linkKey)"
+                        self.openWebPage(to: self.baseURL)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
     
     @IBAction func goBackBtnClicked(_ sender: UIBarButtonItem) {

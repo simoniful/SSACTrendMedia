@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gzn-sA-JPV">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="gzn-sA-JPV">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -334,6 +334,9 @@
                                                 <buttonConfiguration key="configuration" style="plain" image="film" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="36"/>
                                                 </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="boxOfficeBtnClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3rS-79-Ikj"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6KH-aZ-s91">
                                                 <rect key="frame" x="141" y="0.0" width="100" height="100"/>
@@ -411,6 +414,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bookBtn" destination="ZxK-9T-xNp" id="i64-kE-X7D"/>
+                        <outlet property="boxOfficeBtn" destination="5a5-Cb-Bqy" id="j0z-lD-YHU"/>
                         <outlet property="btnGroup" destination="zUc-Zd-myA" id="0np-ql-IbE"/>
                         <outlet property="mapBtn" destination="zKO-Ao-9CF" id="R69-GM-PNZ"/>
                         <outlet property="mediaTableView" destination="ahE-cV-Vih" id="DmA-YB-DZ3"/>
@@ -488,14 +492,13 @@
                                                 </constraints>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n4r-t4-aR5">
-                                                <rect key="frame" x="18" y="45" width="110" height="167"/>
+                                                <rect key="frame" x="18" y="45" width="125.5" height="167"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="110" id="Fd1-hH-ZWw"/>
-                                                    <constraint firstAttribute="height" constant="167" id="jZQ-px-D0c"/>
+                                                    <constraint firstAttribute="width" secondItem="n4r-t4-aR5" secondAttribute="height" multiplier="3:4" id="mwI-Xi-OfK"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미디어 타이틀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGl-ti-p7y">
-                                                <rect key="frame" x="146" y="189" width="103" height="23"/>
+                                                <rect key="frame" x="161.5" y="189" width="103" height="23"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -511,6 +514,7 @@
                                             <constraint firstAttribute="height" constant="230" id="ili-yl-2tS"/>
                                             <constraint firstAttribute="bottom" secondItem="JGl-ti-p7y" secondAttribute="bottom" constant="18" id="l2I-si-Npq"/>
                                             <constraint firstItem="n4r-t4-aR5" firstAttribute="leading" secondItem="1wy-fM-BiY" secondAttribute="leading" constant="18" id="mFE-H9-OQL"/>
+                                            <constraint firstItem="n4r-t4-aR5" firstAttribute="top" secondItem="1wy-fM-BiY" secondAttribute="top" constant="45" id="nAk-K6-c79"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tUQ-6e-cDz">
@@ -545,6 +549,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="goi-SB-7w6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="937.68115942028987" y="809.59821428571422"/>
+        </scene>
+        <!--Box Office View Controller-->
+        <scene sceneID="Y4v-Dq-EHq">
+            <objects>
+                <viewController storyboardIdentifier="BoxOfficeViewController" id="WEb-mX-A9o" customClass="BoxOfficeViewController" customModule="SSACTrendMedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1sC-9C-Odk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filmBg" translatesAutoresizingMaskIntoConstraints="NO" id="f3x-Cc-nAx">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Up-Pg-e0O">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <tableView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wpV-Mb-zeX">
+                                <rect key="frame" x="20" y="64" width="374" height="798"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Orc-tA-QN3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wpV-Mb-zeX" firstAttribute="leading" secondItem="Orc-tA-QN3" secondAttribute="leading" constant="20" id="2N3-63-6B2"/>
+                            <constraint firstItem="f3x-Cc-nAx" firstAttribute="top" secondItem="1sC-9C-Odk" secondAttribute="top" id="Upx-3a-UWw"/>
+                            <constraint firstItem="f3x-Cc-nAx" firstAttribute="trailing" secondItem="Orc-tA-QN3" secondAttribute="trailing" id="Wjg-xu-BQz"/>
+                            <constraint firstItem="f3x-Cc-nAx" firstAttribute="leading" secondItem="Orc-tA-QN3" secondAttribute="leading" id="bK1-Gh-23o"/>
+                            <constraint firstAttribute="bottom" secondItem="1Up-Pg-e0O" secondAttribute="bottom" id="dgZ-1R-Sv4"/>
+                            <constraint firstItem="1Up-Pg-e0O" firstAttribute="leading" secondItem="Orc-tA-QN3" secondAttribute="leading" id="dp2-A4-iry"/>
+                            <constraint firstItem="1Up-Pg-e0O" firstAttribute="top" secondItem="1sC-9C-Odk" secondAttribute="top" id="eUy-dE-MH7"/>
+                            <constraint firstItem="wpV-Mb-zeX" firstAttribute="bottom" secondItem="Orc-tA-QN3" secondAttribute="bottom" id="f4u-YG-qyp"/>
+                            <constraint firstItem="wpV-Mb-zeX" firstAttribute="top" secondItem="Orc-tA-QN3" secondAttribute="top" constant="20" id="jAf-T2-1op"/>
+                            <constraint firstItem="Orc-tA-QN3" firstAttribute="trailing" secondItem="wpV-Mb-zeX" secondAttribute="trailing" constant="20" id="m9u-MU-tAQ"/>
+                            <constraint firstItem="1Up-Pg-e0O" firstAttribute="trailing" secondItem="Orc-tA-QN3" secondAttribute="trailing" id="ndh-cT-I4R"/>
+                            <constraint firstAttribute="bottom" secondItem="f3x-Cc-nAx" secondAttribute="bottom" id="rfA-Vi-q8U"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vlH-Bc-KLe"/>
+                    <connections>
+                        <outlet property="boxOfficeTableView" destination="wpV-Mb-zeX" id="P1a-Dd-89V"/>
+                        <outlet property="imageBg" destination="f3x-Cc-nAx" id="IzB-gb-ZBT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NbJ-ft-aZP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-497.10144927536237" y="-585.26785714285711"/>
         </scene>
         <!--Cinema Location View Controller-->
         <scene sceneID="PjZ-Gy-2Jv">
@@ -601,6 +652,7 @@
         <image name="book.closed" catalog="system" width="115" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="film" catalog="system" width="128" height="93"/>
+        <image name="filmBg" width="1100" height="727"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="map" catalog="system" width="128" height="110"/>
