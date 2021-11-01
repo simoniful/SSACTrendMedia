@@ -18,6 +18,31 @@ class BoxOfficeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 1. 내일 날짜 구하기 > 영화진흥 박스오피스
+        // 현재 시간 별로 86400초 - 하루 치 제거
+        // 타임 인터벌
+        // Calendar 구조체
+        
+        let calendar = Calendar.current
+        // DateFormatter 활용 가능
+        // month, year 등 옵션 활용 가능
+        let tomarrow = calendar.date(byAdding: .day, value: 1, to: Date())
+        let yesterday = calendar.date(byAdding: .day, value: -1, to: Date())
+        print(yesterday,tomarrow)
+        
+        // 2. 이번 주 월요일 > 로또 최근 회차(매주 토요일)
+        // struct vs class 차이 - 참조/값
+        var component = calendar.dateComponents([.weekOfYear, .yearForWeekOfYear, .weekday], from: Date())
+        // 요일
+        component.weekday = 2
+        let mondayWeek = calendar.date(from: component)
+        print(mondayWeek)
+        
+        // - class
+        // let dateFormat = DateFormatter()
+        // dateFormat.dateFormat = "워뤙"
+        
         boxOfficeTableView.delegate = self
         boxOfficeTableView.dataSource = self
         let nibName = UINib(nibName: BoxOfficeTableViewCell.identifier, bundle: nil)
