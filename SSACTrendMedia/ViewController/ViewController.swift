@@ -9,6 +9,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import RealmSwift
 
 class ViewController: UIViewController {
     @IBOutlet weak var btnGroup: UIStackView!
@@ -17,11 +18,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var mapBtn: UIBarButtonItem!
     @IBOutlet weak var boxOfficeBtn: UIButton!
     
+    let localRealm = try! Realm()
+    
     // let tvShowInformation = TvShowInformation()
     var trendInfoData: [TrendInfo] = []
     var genreData: [GenreModel] = []
     var startPage = 1
     var totalCount = 0
+    var targetDate = "20211027"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +40,18 @@ class ViewController: UIViewController {
         btnGroup.layer.shadowOffset = CGSize(width: 0, height: 0)
         btnGroup.layer.shadowRadius = 10
         btnGroup.layer.masksToBounds = false
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        let yesterday = formatter.string(from: Calendar.current.date(byAdding: .day, value: -1, to: Date())!)
+        targetDate = yesterday
+        
+        print(targetDate)
+        
         fetchGenreData()
         fetchTrendInfo()
+        fetchBoxOffice ()
+        print("Realm is located at", localRealm.configuration.fileURL!)
     }
     
     @objc func fetchGenreData() {
@@ -45,9 +60,34 @@ class ViewController: UIViewController {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print("JSON: \(json)")
+                // print("JSON: \(json)")
                 self.genreData = json["genres"].arrayValue.map {
                     GenreModel(id: $0["id"].intValue, name: $0["name"].stringValue)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    @objc func fetchBoxOffice () {
+        let url = Endpoint.boxOfficeURL
+        let parameters: Parameters = [
+            "key": APIKey.kofic,
+            "targetDt": targetDate
+        ]
+        AF.request(url, method: .get, parameters: parameters).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // print("JSON: \(json)")
+                try! self.localRealm.write { self.localRealm.delete(self.localRealm.objects(BoxOffice.self)) }
+                json["boxOfficeResult"]["dailyBoxOfficeList"].arrayValue.forEach {
+                    let item = BoxOffice(movieTitle: $0["movieNm"].stringValue, ranking: $0["rnum"].stringValue, releaseDate: $0["openDt"].stringValue)
+                    
+                    try! self.localRealm.write {
+                         self.localRealm.add(item)
+                    }
                 }
             case .failure(let error):
                 print(error)
@@ -61,7 +101,6 @@ class ViewController: UIViewController {
             switch response.result {
             case .success(let value):
                 let json = JSON(value)
-                print("JSON: \(json)")
                 let data = json["results"].arrayValue.map({
                     TrendInfo(title: $0["title"].stringValue, releaseDate: $0["release_date"].stringValue, genres: $0["genre_ids"].arrayValue.map({ $0.intValue }) , region: $0["original_language"].stringValue, overview: $0["overview"].stringValue, rate: $0["vote_average"].doubleValue, originalTitle: $0["original_title"].stringValue, backdropImage: $0["backdrop_path"].stringValue, posterImage: $0["poster_path"].stringValue, mediaId: $0["id"].intValue)
                 })

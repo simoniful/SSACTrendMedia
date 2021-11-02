@@ -29,6 +29,9 @@
 		F46A91DF272A7E3F00B750E9 /* BoxOfficeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46A91DD272A7E3F00B750E9 /* BoxOfficeTableViewCell.swift */; };
 		F46A91E0272A7E3F00B750E9 /* BoxOfficeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F46A91DE272A7E3F00B750E9 /* BoxOfficeTableViewCell.xib */; };
 		F46A91E2272AA00600B750E9 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46A91E1272AA00600B750E9 /* Constant.swift */; };
+		F487B8C127316A54004DD553 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F487B8C027316A54004DD553 /* RealmModel.swift */; };
+		F487B8C427316ABF004DD553 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = F487B8C327316ABF004DD553 /* Realm */; };
+		F487B8C627316ABF004DD553 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F487B8C527316ABF004DD553 /* RealmSwift */; };
 		F49B631F271D3E4600BC042B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B631E271D3E4600BC042B /* AppDelegate.swift */; };
 		F49B6321271D3E4600BC042B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B6320271D3E4600BC042B /* SceneDelegate.swift */; };
 		F49B6323271D3E4600BC042B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49B6322271D3E4600BC042B /* ViewController.swift */; };
@@ -58,6 +61,7 @@
 		F46A91DD272A7E3F00B750E9 /* BoxOfficeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxOfficeTableViewCell.swift; sourceTree = "<group>"; };
 		F46A91DE272A7E3F00B750E9 /* BoxOfficeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxOfficeTableViewCell.xib; sourceTree = "<group>"; };
 		F46A91E1272AA00600B750E9 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		F487B8C027316A54004DD553 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		F49B631B271D3E4600BC042B /* SSACTrendMedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSACTrendMedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49B631E271D3E4600BC042B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F49B6320271D3E4600BC042B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +80,8 @@
 			files = (
 				F41E414E27279D47002379FB /* Alamofire in Frameworks */,
 				F41E414B27279D38002379FB /* SwiftyJSON in Frameworks */,
+				F487B8C427316ABF004DD553 /* Realm in Frameworks */,
+				F487B8C627316ABF004DD553 /* RealmSwift in Frameworks */,
 				F415C27A271EA05900290F29 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -83,6 +89,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F487B8BD273169AA004DD553 /* StroyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				F49B6324271D3E4600BC042B /* Main.storyboard */,
+				F415C25E271D98FE00290F29 /* MediaCastTableViewCell.xib */,
+				F415C27E271EB68F00290F29 /* MediaCastOverviewTableViewCell.xib */,
+				F415C266271D9F9400290F29 /* MediaSearchTableViewCell.xib */,
+				F415C288271EEF2400290F29 /* MediaBookCollectionViewCell.xib */,
+				F46A91DE272A7E3F00B750E9 /* BoxOfficeTableViewCell.xib */,
+			);
+			path = StroyBoard;
+			sourceTree = "<group>";
+		};
+		F487B8BE273169FB004DD553 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F415C257271D515000290F29 /* MediaTableViewCell.swift */,
+				F49B6322271D3E4600BC042B /* ViewController.swift */,
+				F415C25D271D98FE00290F29 /* MediaCastTableViewCell.swift */,
+				F415C27D271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift */,
+				F415C259271D8A6000290F29 /* MediaCastTableViewController.swift */,
+				F415C265271D9F9400290F29 /* MediaSearchTableViewCell.swift */,
+				F415C263271D9EBA00290F29 /* MediaSearchTableViewController.swift */,
+				F415C27B271EA77300290F29 /* WebViewController.swift */,
+				F415C287271EEF2400290F29 /* MediaBookCollectionViewCell.swift */,
+				F415C281271ED78700290F29 /* MediaBookCollectionViewController.swift */,
+				F4F7B98B271FE30A00B0B915 /* CinemaLocationViewController.swift */,
+				F46A91DD272A7E3F00B750E9 /* BoxOfficeTableViewCell.swift */,
+				F41E415427285E4B002379FB /* BoxOfficeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F487B8BF27316A3B004DD553 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				F487B8C027316A54004DD553 /* RealmModel.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		F49B6312271D3E4600BC042B = {
 			isa = PBXGroup;
 			children = (
@@ -104,26 +151,10 @@
 			children = (
 				F49B631E271D3E4600BC042B /* AppDelegate.swift */,
 				F49B6320271D3E4600BC042B /* SceneDelegate.swift */,
-				F49B6324271D3E4600BC042B /* Main.storyboard */,
-				F415C257271D515000290F29 /* MediaTableViewCell.swift */,
-				F49B6322271D3E4600BC042B /* ViewController.swift */,
-				F415C25E271D98FE00290F29 /* MediaCastTableViewCell.xib */,
-				F415C25D271D98FE00290F29 /* MediaCastTableViewCell.swift */,
-				F415C27E271EB68F00290F29 /* MediaCastOverviewTableViewCell.xib */,
-				F415C27D271EB68F00290F29 /* MediaCastOverviewTableViewCell.swift */,
-				F415C259271D8A6000290F29 /* MediaCastTableViewController.swift */,
-				F415C266271D9F9400290F29 /* MediaSearchTableViewCell.xib */,
-				F415C265271D9F9400290F29 /* MediaSearchTableViewCell.swift */,
-				F415C263271D9EBA00290F29 /* MediaSearchTableViewController.swift */,
+				F487B8BD273169AA004DD553 /* StroyBoard */,
+				F487B8BE273169FB004DD553 /* ViewController */,
+				F487B8BF27316A3B004DD553 /* Realm */,
 				F41E414F2727A7E6002379FB /* MovieModel.swift */,
-				F415C27B271EA77300290F29 /* WebViewController.swift */,
-				F415C288271EEF2400290F29 /* MediaBookCollectionViewCell.xib */,
-				F415C287271EEF2400290F29 /* MediaBookCollectionViewCell.swift */,
-				F415C281271ED78700290F29 /* MediaBookCollectionViewController.swift */,
-				F4F7B98B271FE30A00B0B915 /* CinemaLocationViewController.swift */,
-				F46A91DD272A7E3F00B750E9 /* BoxOfficeTableViewCell.swift */,
-				F46A91DE272A7E3F00B750E9 /* BoxOfficeTableViewCell.xib */,
-				F41E415427285E4B002379FB /* BoxOfficeViewController.swift */,
 				F415C24F271D4E7000290F29 /* TvShowInformation.swift */,
 				F46A91E1272AA00600B750E9 /* Constant.swift */,
 				F49B6327271D3E4700BC042B /* Assets.xcassets */,
@@ -153,6 +184,8 @@
 				F415C279271EA05900290F29 /* Kingfisher */,
 				F41E414A27279D38002379FB /* SwiftyJSON */,
 				F41E414D27279D47002379FB /* Alamofire */,
+				F487B8C327316ABF004DD553 /* Realm */,
+				F487B8C527316ABF004DD553 /* RealmSwift */,
 			);
 			productName = SSACTrendMedia;
 			productReference = F49B631B271D3E4600BC042B /* SSACTrendMedia.app */;
@@ -186,6 +219,7 @@
 				F415C278271EA05900290F29 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				F41E414927279D38002379FB /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				F41E414C27279D47002379FB /* XCRemoteSwiftPackageReference "Alamofire" */,
+				F487B8C227316ABF004DD553 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = F49B631C271D3E4600BC042B /* Products */;
 			projectDirPath = "";
@@ -221,6 +255,7 @@
 			files = (
 				F415C267271D9F9400290F29 /* MediaSearchTableViewCell.swift in Sources */,
 				F415C27C271EA77300290F29 /* WebViewController.swift in Sources */,
+				F487B8C127316A54004DD553 /* RealmModel.swift in Sources */,
 				F49B6323271D3E4600BC042B /* ViewController.swift in Sources */,
 				F415C264271D9EBA00290F29 /* MediaSearchTableViewController.swift in Sources */,
 				F41E415527285E4B002379FB /* BoxOfficeViewController.swift in Sources */,
@@ -484,6 +519,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		F487B8C227316ABF004DD553 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.18.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -501,6 +544,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F41E414C27279D47002379FB /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		F487B8C327316ABF004DD553 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F487B8C227316ABF004DD553 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		F487B8C527316ABF004DD553 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F487B8C227316ABF004DD553 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
