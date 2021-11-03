@@ -13,13 +13,15 @@ class BoxOffice: Object {
     // 3. PK키 구성
     
     @Persisted(primaryKey: true) var _id: ObjectId // AutoIncreasement
+    @Persisted var searchDate: String
     @Persisted var movieTitle: String
     @Persisted var ranking: String
     @Persisted var releaseDate: String
 
-    convenience init(movieTitle: String, ranking: String, releaseDate: String) {
+    convenience init(searchDate: String, movieTitle: String, ranking: String, releaseDate: String) {
         self.init()
         
+        self.searchDate = searchDate
         self.movieTitle = movieTitle
         self.ranking = ranking
         self.releaseDate = releaseDate

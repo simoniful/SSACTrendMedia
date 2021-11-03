@@ -561,36 +561,71 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filmBg" translatesAutoresizingMaskIntoConstraints="NO" id="f3x-Cc-nAx">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Up-Pg-e0O">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <tableView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wpV-Mb-zeX">
-                                <rect key="frame" x="20" y="64" width="374" height="798"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wpV-Mb-zeX">
+                                <rect key="frame" x="20" y="124" width="374" height="738"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wnz-zx-Pas">
+                                <rect key="frame" x="20" y="44" width="374" height="60"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tfk-8q-H6u">
+                                        <rect key="frame" x="8" y="8" width="358" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHz-yh-i5f">
+                                                <rect key="frame" x="0.0" y="0.0" width="41" height="44"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system" title=""/>
+                                                <connections>
+                                                    <action selector="closeBtnClicked:" destination="WEb-mX-A9o" eventType="touchUpInside" id="qHA-c5-st0"/>
+                                                </connections>
+                                            </button>
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="jdL-XO-rFG">
+                                                <rect key="frame" x="49" y="0.0" width="252.5" height="44"/>
+                                            </datePicker>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jbz-jO-a3G">
+                                                <rect key="frame" x="309.5" y="0.0" width="48.5" height="44"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="검색"/>
+                                                <connections>
+                                                    <action selector="searchBtnClicked:" destination="WEb-mX-A9o" eventType="touchUpInside" id="pF2-SE-DgA"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="TQF-bX-Vv1"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="tfk-8q-H6u" firstAttribute="leading" secondItem="Wnz-zx-Pas" secondAttribute="leading" constant="8" id="Wh7-ax-cMQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="tfk-8q-H6u" secondAttribute="bottom" constant="8" id="eWG-Zn-MXi"/>
+                                    <constraint firstAttribute="trailing" secondItem="tfk-8q-H6u" secondAttribute="trailing" constant="8" id="qXd-Dp-Spp"/>
+                                    <constraint firstItem="tfk-8q-H6u" firstAttribute="top" secondItem="Wnz-zx-Pas" secondAttribute="top" constant="8" id="ysV-tp-Idf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Orc-tA-QN3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wpV-Mb-zeX" firstAttribute="leading" secondItem="Orc-tA-QN3" secondAttribute="leading" constant="20" id="2N3-63-6B2"/>
+                            <constraint firstItem="Wnz-zx-Pas" firstAttribute="leading" secondItem="Orc-tA-QN3" secondAttribute="leading" constant="20" id="I1U-Fr-cnF"/>
                             <constraint firstItem="f3x-Cc-nAx" firstAttribute="top" secondItem="1sC-9C-Odk" secondAttribute="top" id="Upx-3a-UWw"/>
                             <constraint firstItem="f3x-Cc-nAx" firstAttribute="trailing" secondItem="Orc-tA-QN3" secondAttribute="trailing" id="Wjg-xu-BQz"/>
                             <constraint firstItem="f3x-Cc-nAx" firstAttribute="leading" secondItem="Orc-tA-QN3" secondAttribute="leading" id="bK1-Gh-23o"/>
-                            <constraint firstAttribute="bottom" secondItem="1Up-Pg-e0O" secondAttribute="bottom" id="dgZ-1R-Sv4"/>
-                            <constraint firstItem="1Up-Pg-e0O" firstAttribute="leading" secondItem="Orc-tA-QN3" secondAttribute="leading" id="dp2-A4-iry"/>
-                            <constraint firstItem="1Up-Pg-e0O" firstAttribute="top" secondItem="1sC-9C-Odk" secondAttribute="top" id="eUy-dE-MH7"/>
                             <constraint firstItem="wpV-Mb-zeX" firstAttribute="bottom" secondItem="Orc-tA-QN3" secondAttribute="bottom" id="f4u-YG-qyp"/>
-                            <constraint firstItem="wpV-Mb-zeX" firstAttribute="top" secondItem="Orc-tA-QN3" secondAttribute="top" constant="20" id="jAf-T2-1op"/>
+                            <constraint firstItem="Wnz-zx-Pas" firstAttribute="top" secondItem="Orc-tA-QN3" secondAttribute="top" id="g6W-BL-1ji"/>
                             <constraint firstItem="Orc-tA-QN3" firstAttribute="trailing" secondItem="wpV-Mb-zeX" secondAttribute="trailing" constant="20" id="m9u-MU-tAQ"/>
-                            <constraint firstItem="1Up-Pg-e0O" firstAttribute="trailing" secondItem="Orc-tA-QN3" secondAttribute="trailing" id="ndh-cT-I4R"/>
                             <constraint firstAttribute="bottom" secondItem="f3x-Cc-nAx" secondAttribute="bottom" id="rfA-Vi-q8U"/>
+                            <constraint firstItem="Orc-tA-QN3" firstAttribute="trailing" secondItem="Wnz-zx-Pas" secondAttribute="trailing" constant="20" id="uES-Sm-zxS"/>
+                            <constraint firstItem="wpV-Mb-zeX" firstAttribute="top" secondItem="Wnz-zx-Pas" secondAttribute="bottom" constant="20" id="w4I-2z-Uu2"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="vlH-Bc-KLe"/>
                     <connections>
+                        <outlet property="boxOfficeDatePicker" destination="jdL-XO-rFG" id="IQD-Qi-7IA"/>
                         <outlet property="boxOfficeTableView" destination="wpV-Mb-zeX" id="P1a-Dd-89V"/>
+                        <outlet property="closeBtn" destination="oHz-yh-i5f" id="R4H-mD-QxM"/>
                         <outlet property="imageBg" destination="f3x-Cc-nAx" id="IzB-gb-ZBT"/>
+                        <outlet property="searchBtn" destination="Jbz-jO-a3G" id="Z31-uw-p84"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NbJ-ft-aZP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

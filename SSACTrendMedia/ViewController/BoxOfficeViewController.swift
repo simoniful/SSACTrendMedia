@@ -13,10 +13,13 @@ import RealmSwift
 class BoxOfficeViewController: UIViewController {
     let localRealm = try! Realm()
     var boxOfficeData: Results<BoxOffice>!
+    var targetDate = ""
     
     @IBOutlet weak var imageBg: UIImageView!
     @IBOutlet weak var boxOfficeTableView: UITableView!
     @IBOutlet weak var closeBtn: UIButton!
+    @IBOutlet weak var boxOfficeDatePicker: UIDatePicker!
+    @IBOutlet weak var searchBtn: UIButton!
     
     
     override func viewDidLoad() {
@@ -25,20 +28,65 @@ class BoxOfficeViewController: UIViewController {
         boxOfficeTableView.dataSource = self
         let nibName = UINib(nibName: BoxOfficeTableViewCell.identifier, bundle: nil)
         boxOfficeTableView.register(nibName, forCellReuseIdentifier: BoxOfficeTableViewCell.identifier)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark.circle"), style: .plain, target: self, action: #selector(closeBtnClicked))
-        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 100, height: 0))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: searchBar)
-        
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.white
         boxOfficeTableView.backgroundColor = UIColor.clear
         
-        boxOfficeData = localRealm.objects(BoxOffice.self)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        let yesterday = formatter.string(from: Calendar.current.date(byAdding: .day, value: -1, to: Date())!)
+        targetDate = yesterday
+        if (localRealm.objects(BoxOffice.self).filter("searchDate == '\(yesterday)'").isEmpty) {
+            fetchBoxOffice(dateString: yesterday)
+        }
+
+        print("Realm is located at", localRealm.configuration.fileURL!)
+        
+        boxOfficeData = localRealm.objects(BoxOffice.self).filter("searchDate == '\(yesterday)'")
         boxOfficeTableView.reloadData()
+        
     }
     
     @IBAction func closeBtnClicked(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func searchBtnClicked(_ sender: UIButton) {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        let selectDay = formatter.string(from: Calendar.current.date(byAdding: .day, value: 0, to: boxOfficeDatePicker.date)!)
+        targetDate = selectDay
+        if (localRealm.objects(BoxOffice.self).filter("searchDate == '\(selectDay)'").isEmpty) {
+            fetchBoxOffice(dateString: selectDay)
+        }
+        boxOfficeData = localRealm.objects(BoxOffice.self).filter("searchDate == '\(selectDay)'")
+        boxOfficeTableView.reloadData()
+    }
+    
+    @objc func fetchBoxOffice(dateString: String) {
+        let url = Endpoint.boxOfficeURL
+        let parameters: Parameters = [
+            "key": APIKey.kofic,
+            "targetDt": targetDate
+        ]
+        AF.request(url, method: .get, parameters: parameters).validate().responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let json = JSON(value)
+                // print("JSON: \(json)")
+                // try! self.localRealm.write { self.localRealm.delete(self.localRealm.objects(BoxOffice.self)) }
+                json["boxOfficeResult"]["dailyBoxOfficeList"].arrayValue.forEach {
+                    let item = BoxOffice(searchDate: dateString, movieTitle: $0["movieNm"].stringValue, ranking: $0["rnum"].stringValue, releaseDate: $0["openDt"].stringValue)
+        
+                    try! self.localRealm.write {
+                         self.localRealm.add(item)
+                    }
+                }
+                print("Data fetching")
+                self.boxOfficeData = self.localRealm.objects(BoxOffice.self).filter("searchDate == '\(dateString)'")
+                self.boxOfficeTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
 }

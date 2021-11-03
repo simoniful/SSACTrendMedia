@@ -25,7 +25,6 @@ class ViewController: UIViewController {
     var genreData: [GenreModel] = []
     var startPage = 1
     var totalCount = 0
-    var targetDate = "20211027"
 
     
     override func viewDidLoad() {
@@ -41,17 +40,8 @@ class ViewController: UIViewController {
         btnGroup.layer.shadowRadius = 10
         btnGroup.layer.masksToBounds = false
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyyMMdd"
-        let yesterday = formatter.string(from: Calendar.current.date(byAdding: .day, value: -1, to: Date())!)
-        targetDate = yesterday
-        
-        print(targetDate)
-        
         fetchGenreData()
         fetchTrendInfo()
-        fetchBoxOffice ()
-        print("Realm is located at", localRealm.configuration.fileURL!)
     }
     
     @objc func fetchGenreData() {
@@ -70,30 +60,6 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc func fetchBoxOffice () {
-        let url = Endpoint.boxOfficeURL
-        let parameters: Parameters = [
-            "key": APIKey.kofic,
-            "targetDt": targetDate
-        ]
-        AF.request(url, method: .get, parameters: parameters).validate().responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                let json = JSON(value)
-                // print("JSON: \(json)")
-                try! self.localRealm.write { self.localRealm.delete(self.localRealm.objects(BoxOffice.self)) }
-                json["boxOfficeResult"]["dailyBoxOfficeList"].arrayValue.forEach {
-                    let item = BoxOffice(movieTitle: $0["movieNm"].stringValue, ranking: $0["rnum"].stringValue, releaseDate: $0["openDt"].stringValue)
-                    
-                    try! self.localRealm.write {
-                         self.localRealm.add(item)
-                    }
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
     
     @objc func fetchTrendInfo() {
         let url = "https://api.themoviedb.org/3/trending/movie/day?api_key=\(APIKey.TMDB)&language=ko&page=\(self.startPage)"
